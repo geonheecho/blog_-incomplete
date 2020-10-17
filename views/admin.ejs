@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pike Admin PRO</title>
+<meta name="description" content="Bootstrap 4 Admin Theme | Pike Admin" />
+<meta name="author" content="Pike Web Development - https://www.pikephp.com" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- Font Awesome CSS -->
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<!-- Custom CSS -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<!-- Mobile Specific Meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!-- Favicon-->
+<link rel="shortcut icon" href="img/fav.png" />
+<!-- Author Meta -->
+<meta name="author" content="codepixer" />
+<!-- Meta Description -->
+<meta name="description" content="" />
+<!-- Meta Keyword -->
+<meta name="keywords" content="" />
+<!-- meta character set -->
+<meta charset="UTF-8" />
+<!-- Site Title -->
+<title>Ruft Blog</title>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto:400,500" rel="stylesheet" />
+<!--
+      CSS
+      
+      
+			============================================= -->
+<link rel="stylesheet" href="css/linearicons.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/magnific-popup.css" />
+<link rel="stylesheet" href="css/nice-select.css" />
+<link rel="stylesheet" href="css/animate.min.css" />
+<link rel="stylesheet" href="css/owl.carousel.css" />
+<link rel="stylesheet" href="css/main.css" />
+</head>
+
+<header id="header">
+    <div class="container box_1170 main-menu">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <a href="index"></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu" id="header_list">
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- End header Area -->
+<section class="banner-area relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="container box_1170">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Admin
+                </h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+<br/><br/><br/>
+
+<div class="container-fluid">
+    <div class="card" data-toggle="lists">
+        <div class="table-responsive">
+            <div class="table table-sm table-nowrap card-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>작성자</th>
+                            <th>시간</th>
+                            <th>수정</th>
+                            <th>삭제</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="table_list">
+
+                    </tbody>
+                </table>
+            </div>
+
+                <div class="modal" id="edit_information" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                <div class="modal" id="del_information" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+                <br/><br/><br/>
+
+        </div>
+    </div>
+
+
+        </body>
+        <script src="js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+        <script src="js/easing.min.js"></script>
+        <script src="js/hoverIntent.js"></script>
+        <script src="js/superfish.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.nice-select.min.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <script src="js/mail-script.js"></script>
+        <script src="js/main.js"></script>
+        <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+</html>
+<script>
+    var type = Cookies.get("type")
+
+    header()
+
+    function header() {
+        var html = ""
+        if (type == "" || type == undefined || type == '') {
+            html += '<li class="menu-active"><a href="/">Home</a></li>'
+            html += '<li><a href="login">login</a></li>'
+            $('#header_list').html(html)
+        } else if (type == 2) {
+            html += '<li class="menu-active"><a href="/">Home</a></li>'
+            html += '<li><a href="logout">로그아웃</a></li>'
+            $('#header_list').html(html)
+        } else if (type == 1) {
+            html += '<li class="menu-active"><a href="/">Home</a></li>'
+            html += '<li><a href="logout">로그아웃</a></li>'
+            html += '<li><a href="admin">admin</a></li>'
+            html += '<li><a href="contact">write</a></li>'
+            $('#header_list').html(html)
+        }
+    }
+
+    var data_list = null;
+
+    start()
+
+    function start() {
+
+        $.ajax({
+            url: "/admin_update",
+            dataType: "json",
+            type: "get",
+
+            success: function(data) {
+                data_list = data
+                var html = ''
+                for (var i = 0; i < data.length; i++) {
+                    var pk_id = data[i].pk_id
+                    var title = data[i].title
+                    var content = data[i].content
+
+                    html += '<tr>'
+                    html += '<td id="pk_id" name="pk_id">' + pk_id + '</td>'
+                    html += '<td id="title" name="title">' + title + '</td>'
+                    html += '<td id="content" name="content" style="width:100px;">' + content + '</td>'
+                    html += '<td><button class="btn btn-primary" data-toggle="modal" data-target="#edit_information" onclick="updata_sql2(' + i + ');">수정</button></td>'
+                    html += '<td><button class="btn btn-primary" data-toggle="modal" data-target="#del_information" onclick="delete_sql(' + i + ');">삭제</button></td>'
+                    html += '</tr>'
+
+                    $("#table_list").html(html);
+                }
+            },
+
+            error: function(data) {
+                console.log(data);
+            },
+        });
+    }
+
+
+    function updata_sql2(i) {
+
+        var pk_id = data_list[i].pk_id
+        var content = data_list[i].content
+        var title = data_list[i].title
+
+
+        var data = {
+            pk_id: pk_id,
+            content: content,
+            title: title,
+        }
+
+
+        $.ajax({
+            url: "/admin_update",
+            type: "get",
+            dataType: "json",
+            data: data,
+            success: function(data) {
+                var html = '';
+                html += '<div class="modal-dialog modal-dialog-centered" role="document">';
+                html += '   <div class="modal-content">';
+                html += '       <div class="modal-card card" data-toggle="lists">';
+                html += '           <div class="card-header">';
+                html += '               <div class="row align-items-center">';
+                html += '                   <div class="col"><h4 class="card-header-title" id="exampleM' +
+                    'odalCenterTitle">정보 수정</h4></div>';
+                html += '                   <div class="col-auto"><button type="button" class="close" a' +
+                    'ta-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></butto' +
+                    'n></div>';
+                html += '               </div>';
+                html += '           </div>';
+                html += '           <div class="card-body" style="max-height: 850px;">';
+                html += '               <div class="form-row">';
+                html += '                       <div style="font-size: 12px;color: #899db7;margin: 0;">' +
+                    'Img 선택</div>';
+                html += '<input class="form-control" id="data_pk_id" name="pk_id" value=' + pk_id + ' hidden>'
+                html += '<textarea name="content" id="content_data"  value="content_data" style="width: 480px; height: 400px;">"' + content + '"</textarea>'
+                    // html += '          <input type="text" class="form-control" id="content_data" style="width: 480px; height: 400px;" value='+content+' >';
+                html += '<br>'
+                html += '<br>'
+                html += '<br>'
+                html += '<button type="submit" class="btn btn-primary" onclick="link_to_detail();" >보내기</button>'
+                html += '           </div>';
+                html += '       </div>';
+                html += '   </div>';
+                html += '</div>';
+
+                $('#edit_information').html(html);
+                //console.log("들어오나요?"+title)
+
+            }
+        })
+    }
+
+    //다음 페이지로 이동 시켜줄때 PK_id를 받아와서 해당 데이터의 데이터만 보여주기 
+    function link_to_detail() {
+
+
+        var content = $("#content_data").val();
+        var pk_id = $("#data_pk_id").val();
+
+        var data = {
+                pk_id: pk_id,
+                content: content,
+            }
+            // console.log("functionlink_to_detail -> data", data)
+
+
+        $.ajax({
+            url: "/admin_update",
+            type: "post",
+            dataType: "json",
+            data: data,
+            success: function(data) {
+
+                alert("수정되었습니다.")
+                history.go(0);
+                // $('#edit_information').modal("hide");
+
+
+            }
+        })
+    }
+
+    function delete_sql(i) {
+        var pk_id = data_list[i].pk_id
+
+        var data = {
+            pk_id: pk_id,
+        }
+        $.ajax({
+            url: "/admin_delete",
+            type: "post",
+            dataType: "json",
+            data: data,
+            success: function(data) {
+                alert("삭제되었습니다.");
+                history.go(0);
+            }
+        })
+    }
+</script>
