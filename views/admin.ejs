@@ -70,7 +70,7 @@
         </div>
     </div>
 </section>
-<br/><br/><br/>
+<br /><br /><br />
 
 <div class="container-fluid">
     <div class="card" data-toggle="lists">
@@ -87,38 +87,43 @@
 
                         </tr>
                     </thead>
-                    <tbody id="table_list">
+                    <div id="table_list">
 
-                    </tbody>
+                    </div>
                 </table>
             </div>
 
-                <div class="modal" id="edit_information" tabindex="-1" role="dialog" aria-hidden="true"></div>
-                <div class="modal" id="del_information" tabindex="-1" role="dialog" aria-hidden="true"></div>
+            <div class="modal" id="edit_information" tabindex="-1" role="dialog" aria-hidden="true"></div>
+            <div class="modal" id="del_information" tabindex="-1" role="dialog" aria-hidden="true"></div>
 
-                <br/><br/><br/>
+            <br /><br /><br />
 
         </div>
     </div>
 
 
-        </body>
-        <script src="js/vendor/jquery-2.2.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-        <script src="js/easing.min.js"></script>
-        <script src="js/hoverIntent.js"></script>
-        <script src="js/superfish.min.js"></script>
-        <script src="js/jquery.ajaxchimp.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.nice-select.min.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/mail-script.js"></script>
-        <script src="js/main.js"></script>
-        <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    </body>
+    <script src="js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script src="js/easing.min.js"></script>
+    <script src="js/hoverIntent.js"></script>
+    <script src="js/superfish.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/mail-script.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/admin_script.js"></script>
+    <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <!-- <script src="js/admin_script.js"></script> -->
 
 </html>
 <script>
@@ -134,10 +139,12 @@
             $('#header_list').html(html)
         } else if (type == 2) {
             html += '<li class="menu-active"><a href="/">Home</a></li>'
+            html += '<li><a href="community">커뮤니티게시판</a></li>'
             html += '<li><a href="logout">로그아웃</a></li>'
             $('#header_list').html(html)
         } else if (type == 1) {
             html += '<li class="menu-active"><a href="/">Home</a></li>'
+            html += '<li><a href="community">커뮤니티게시판</a></li>'
             html += '<li><a href="logout">로그아웃</a></li>'
             html += '<li><a href="admin">admin</a></li>'
             html += '<li><a href="contact">write</a></li>'
@@ -156,14 +163,16 @@
             dataType: "json",
             type: "get",
 
-            success: function(data) {
+            success: function (data) {
                 data_list = data
                 var html = ''
                 for (var i = 0; i < data.length; i++) {
                     var pk_id = data[i].pk_id
+                    console.log("start -> pk_id", pk_id)
                     var title = data[i].title
+                    console.log("start -> title", title)
                     var content = data[i].content
-
+                    console.log("start -> content", content)
                     html += '<tr>'
                     html += '<td id="pk_id" name="pk_id">' + pk_id + '</td>'
                     html += '<td id="title" name="title">' + title + '</td>'
@@ -176,7 +185,7 @@
                 }
             },
 
-            error: function(data) {
+            error: function (data) {
                 console.log(data);
             },
         });
@@ -202,7 +211,7 @@
             type: "get",
             dataType: "json",
             data: data,
-            success: function(data) {
+            success: function (data) {
                 var html = '';
                 html += '<div class="modal-dialog modal-dialog-centered" role="document">';
                 html += '   <div class="modal-content">';
@@ -222,7 +231,7 @@
                     'Img 선택</div>';
                 html += '<input class="form-control" id="data_pk_id" name="pk_id" value=' + pk_id + ' hidden>'
                 html += '<textarea name="content" id="content_data"  value="content_data" style="width: 480px; height: 400px;">"' + content + '"</textarea>'
-                    // html += '          <input type="text" class="form-control" id="content_data" style="width: 480px; height: 400px;" value='+content+' >';
+                // html += '          <input type="text" class="form-control" id="content_data" style="width: 480px; height: 400px;" value='+content+' >';
                 html += '<br>'
                 html += '<br>'
                 html += '<br>'
@@ -247,10 +256,10 @@
         var pk_id = $("#data_pk_id").val();
 
         var data = {
-                pk_id: pk_id,
-                content: content,
-            }
-            // console.log("functionlink_to_detail -> data", data)
+            pk_id: pk_id,
+            content: content,
+        }
+        // console.log("functionlink_to_detail -> data", data)
 
 
         $.ajax({
@@ -258,7 +267,7 @@
             type: "post",
             dataType: "json",
             data: data,
-            success: function(data) {
+            success: function (data) {
 
                 alert("수정되었습니다.")
                 history.go(0);
@@ -280,10 +289,15 @@
             type: "post",
             dataType: "json",
             data: data,
-            success: function(data) {
+            success: function (data) {
                 alert("삭제되었습니다.");
                 history.go(0);
             }
+        })
+    }
+    function start() {
+        $.ajax({
+
         })
     }
 </script>

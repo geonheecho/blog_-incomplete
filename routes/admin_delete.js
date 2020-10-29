@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require("../connection");
 
 router.post("/", function (req, res) {
-  var pk_id = req.body.pk_id;
+  var pk_id = req.body.pk_id;//body post query get
   console.log("pk_id", pk_id);
 
   var del_sql = "delete from admin where pk_id= '" + pk_id + "'";

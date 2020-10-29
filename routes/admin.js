@@ -4,7 +4,7 @@ var db = require("../connection");
 
 router.get("/", function (req, res, next) {
   var sql1 = "select * from admin";
-  console.log(sql1);
+  //console.log(sql1);
   db.query(sql1, function (error, data) {
     if (error) {
       console.log("db오류: " + error);

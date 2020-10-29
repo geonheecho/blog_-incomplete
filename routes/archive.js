@@ -1,21 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../connection");
-var crypto = require("crypto"); // 1
-var cookie = require("cookie-parser");
-var bodyParser = require("body-parser");
 
-
-
-router.get("/", function (req, res) {
-  res.render("index");
-});
 
 
 router.post("/", function (req, res) {
   var user_id = req.body.user_id;
-  //var password = req.body.password;
-  var password = (password = crypto.createHash("sha512").update(req.body.password).digest("base64")); //암호화
+  var password = req.body.password;
   res.cookie("user_id", user_id);
 
   if (user_id === user_id && password === password) {

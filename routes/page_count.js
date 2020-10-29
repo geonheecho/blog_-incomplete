@@ -7,7 +7,7 @@ router.get('/', function(req,res,next){
 
 
     var sql = "select count(*) as cnt from admin"
-    console.log("sql", sql)
+
     db.query(sql,function(err,data){
         if(err){
             console.log(err)

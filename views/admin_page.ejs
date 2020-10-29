@@ -54,9 +54,12 @@
     </table>
 </body>
 <script src="js/vendor/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 <script src="js/easing.min.js"></script>
 <script src="js/hoverIntent.js"></script>
 <script src="js/superfish.min.js"></script>
@@ -105,7 +108,7 @@
             dataType: 'json',
             type: 'get',
 
-            success: function(data) {
+            success: function (data) {
                 //DB에서 받아온 모든 데이터를 활용해서 for문을 돌려서 list를 뿌리기
                 var data = data
                 var html = ''
@@ -120,11 +123,11 @@
                         .toString() + "-" + (
                             date.getMonth() + 1
                         )
-                        .toString() + "-" + date
-                        .getDate()
-                        .toString() + "-" + date
-                        .getHours() + ":" + date
-                        .getMinutes()
+                            .toString() + "-" + date
+                                .getDate()
+                                .toString() + "-" + date
+                                    .getHours() + ":" + date
+                                        .getMinutes()
 
                     html += ' <section class="post-area">'
                     html += '<div class="single-post-item">'
@@ -144,7 +147,7 @@
 
 
             },
-            error: function(data) {
+            error: function (data) {
                 console.log(data)
             }
         })

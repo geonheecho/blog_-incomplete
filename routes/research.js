@@ -10,7 +10,7 @@ router.post('/', function(req, res, next) {
     //select mysql 
 
     var S_mysql = "select * from admin where categories like '%" + data + "%';"
-    console.log("S_mysql", S_mysql)
+
     db.query(S_mysql, function(err, data) {
         console.log("data", data)
         if (err) {

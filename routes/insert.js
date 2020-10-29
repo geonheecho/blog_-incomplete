@@ -31,7 +31,7 @@ router.post('/', upload.single("img"), function(req, res, next) {
 
     //쿠기 가져오기 
     var member_id = req.cookies.member_pk_id
-    console.log("member_id", member_id)
+
 
     var title = req.body.title
     var categories = req.body.categories
@@ -39,7 +39,7 @@ router.post('/', upload.single("img"), function(req, res, next) {
     var present_time = new Date()*1000
     var editor1 = req.body.editor1
     var sql = "insert into admin(pk_id,title,date,content,img,`like`,visit,member_id,comment_id,categories)values(null,'"+title+"','"+present_time+"','"+editor1+"','"+img+"',0,0,"+member_id+",0,'"+categories+"')"
-    console.log("sql", sql)
+
 
     db.query(sql,function(err,data){
         if(err){

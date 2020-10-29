@@ -178,7 +178,7 @@
         <div class="container">
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="about-content col-lg-12">
-                    <h1 class="text-white">Sign-Up</h1>
+                    <h1 class="text-white">회원가입</h1>
                 </div>
             </div>
         </div>
@@ -189,15 +189,16 @@
 
 
 
-    <form action="sign_up" method="POST" id="form-div">
+    <form action="sign_up" method="POST" id="form-div" onsubmit="return CheckForm();">
 
         <div class="validate[required,custom[onlyLetter],length[0,100]] feedback-input">
-            <input id="input_id" type="text" name="user_id" placeholder="ID" class="common-input mb-20 form-control">
-            <input id="input_passwd" type="password" name="password" placeholder="PASSWORD" tabindex="2"
+            <input id="user_id" type="text" name="user_id" placeholder="ID" class="common-input mb-20 form-control">
+            <input id="password" type="password" name="password" placeholder="PASSWORD" tabindex="2"
                 class="common-input mb-20 form-control">
-            <input id="input_passwd" type="password" name="passwdconfm" placeholder="PASSWORD" tabindex="2"
+            <input id="passwdconfm" type="password" name="passwdconfm" placeholder="PASSWORD" tabindex="2"
                 class="common-input mb-20 form-control">
-            <button class="common-input mb-20 form-control" type="submit" id="btn_login" tabindex="3">Sign up</button>
+            <button class="common-input mb-20 form-control" type="submit" id="btn_login" name="btn_login"
+                tabindex="3">Sign up</button>
         </div>
         </div>
 
@@ -225,3 +226,50 @@
 </body>
 
 </html>
+
+<script>
+    function CheckForm() {
+        //alert("아이디가 5~10자 이내인지 확인해주세요");
+        var u_id = document.getElementById("user_id")
+        if (u_id.value.length < 5 || u_id.value.length > 10) {
+            window.alert("아이디가 5~10자 이내인지 확인해주세요");
+            u_id.focus();
+            u_id.select();
+            return false;//멈춤 서브밋에서 펄스나오면 멈춤
+
+
+        }
+        var u_password = document.getElementById("password")
+        if (u_password.value.length == 0) {
+            alert("비밀번호를 입력하세요.");
+            u_password.value = "";
+            u_password.focus();
+            return false;
+        } else if (u_password.value.length < 8 || u_password.value.length > 30) {
+            window.alert("8글자 이상 30글자 이하까지만 입력 가능합니다.")
+            u_password.focus();
+            u_password.select();
+            return false;//멈춤 서브밋에서 펄스나오면 멈춤
+        }
+
+        var pwdconfm = document.getElementById("passwdconfm");
+
+        if (pwdconfm.value.length == 0) {
+            alert("비밀번호 확인란을 입력하세요.");
+            pwdconfm.value = "";
+            pwdconfm.focus();
+            return false;
+        } else if (pwdconfm.value.length < 8 || pwdconfm.value.length > 30) {
+            window.alert("비밀번호 재확인도 8글자 이상 30글자 이하까지만 입력 가능합니다.")
+            pwdconfm.value = "";
+            pwdconfm.focus();
+
+            return false;//멈춤 서브밋에서 펄스나오면 멈춤
+
+        }
+        if (u_password.value != pwdconfm.value) {
+            alert("비밀번호 입력이 일치하지 않습니다.");
+            return false;
+        }
+    }
+</script>

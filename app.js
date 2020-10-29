@@ -39,11 +39,17 @@ app.get("/sigh_up", function (req, res) {
 app.get("/admin_page", function (req, res) {
     res.render("admin_page");
 });
-
-
-
+app.get("/community", function (req, res) {
+    res.render("community");
+});
+app.get("/community_edit_db", function (req, res) {
+    res.render("community_edit_db");
+});
+app.get("/community_details", function (req, res) {
+    res.render("community_details");
+});
 //routes
-
+//js
 var category = require("./routes/category");
 var contact = require("./routes/contact");
 var detail = require("./routes/detail");
@@ -64,8 +70,17 @@ var logout = require("./routes/logout");
 var admin_update = require("./routes/admin_update");
 var admin_delete = require("./routes/admin_delete");
 var admin = require("./routes/admin")
+var community = require("./routes/community")
+var community_insert = require("./routes/community_insert")
+var community_list = require("./routes/community_list")
+var community_blog = require("./routes/community_blog")
+var community_content = require("./routes/community_content")
+var community_heart = require("./routes/community_heart")
+var community_update = require("./routes/community_update")
+var community_edit = require("./routes/community_edit")
+var community_delete = require("./routes/community_delete")
 
-
+// ejs
 app.use("/admin", admin);
 app.use("/detail", detail)
 app.use("/category", category);
@@ -84,6 +99,18 @@ app.use("/research", research);
 app.use("/heart", heart);
 app.use("/top_list", top_list);
 app.use("/logout", logout);
+app.use("/community", community);
+app.use("/community_insert", community_insert);
+app.use("/community_list", community_list);
+app.use("/community_blog", community_blog);
+app.use("/community_content", community_content);
+app.use("/community_heart", community_heart);
+app.use("/community_update", community_update);
+app.use("/community_edit", community_edit);
+app.use("/community_delete", community_delete);
+
+
+
 
 
 app.use("/admin_update", admin_update);

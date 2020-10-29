@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 
     var select_sql = "select * from admin order by pk_id desc LIMIT " + s_point + "," + list + ""; 
-    console.log("select_sql", select_sql)
+
 
     db.query(select_sql,function(err,data){
 

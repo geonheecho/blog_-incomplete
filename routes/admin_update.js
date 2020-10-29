@@ -3,10 +3,8 @@ var router = express.Router();
 var db = require("../connection");
 
 router.get("/", function (req, res, next) {
-  // var sql_select =
-  //   "update admin set content ='" + content + "' where pk_id = " + pk_id + " ";
+
   var sql_select = "select * from admin";
-  //console.log("sql_select", sql_select);
 
   db.query(sql_select, function (err, data) {
     if (err) {
@@ -38,5 +36,4 @@ router.post("/", function (req, res) {
     }
   });
 });
-
 module.exports = router;

@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
     var sql = "select * from admin"
 
     db.query(sql,function(err,data){
-    console.log("data", data)
+
         if(err){
             console.log(err)
         }else{
