@@ -89,7 +89,8 @@
                                         <div class="content">
                                             <span class="heart"></span>
                                             <span class="text">Like<br></span>
-                                            <span class="numb" id="number_like" style="font-family: 'Montserrat',sans-serif;color: grey;"></span>
+                                            <span class="numb" id="number_like"
+                                                style="font-family: 'Montserrat',sans-serif;color: grey;"></span>
                                         </div>
                                     </div>
                                 </h3>
@@ -100,8 +101,10 @@
                             <form>
                                 <div class="form-group">
                                 </div>
-                                <textarea class="form-control mb-10" rows="5" name="message" id="message" placeholder="Messege" required="true"></textarea>
-                                <input type="button" class="primary-btn submit_btn text-uppercase" value="Send Message" onclick="form_list()">
+                                <textarea class="form-control mb-10" rows="5" name="message" id="message"
+                                    placeholder="Messege" required="true"></textarea>
+                                <input type="button" class="primary-btn submit_btn text-uppercase" value="Send Message"
+                                    onclick="form_list()">
                             </form>
                         </div>
                     </div>
@@ -133,9 +136,12 @@
     <!-- End footer Area -->
 
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
     <script src="js/easing.min.js"></script>
     <script src="js/hoverIntent.js"></script>
     <script src="js/superfish.min.js"></script>
@@ -189,11 +195,11 @@
             dataType: 'json',
             type: 'get',
             data: data,
-            success: function(data) {
+            success: function (data) {
                 var title = data[0].title
                 var html = ''
                 var pk_id = data[0].pk_id
-                    // var type = data[0].type
+                // var type = data[0].type
                 var img = data[0].img
                 var content = data[0].content
                 var insert_time = data[0].date
@@ -203,11 +209,11 @@
                     .toString() + "-" + (
                         date.getMonth() + 1
                     )
-                    .toString() + "-" + date
-                    .getDate()
-                    .toString() + "-" + date
-                    .getHours() + ":" + date
-                    .getMinutes()
+                        .toString() + "-" + date
+                            .getDate()
+                            .toString() + "-" + date
+                                .getHours() + ":" + date
+                                    .getMinutes()
 
                 if (type == 1) {
                     html += '<div class="single" rows="5" style="border-style:solid; padding: 30px; height: 150px;"><h1>' + title + '</h1>'
@@ -260,7 +266,7 @@
                 }
 
             },
-            error: function(error) {
+            error: function (error) {
                 console.log(error)
             }
         })
@@ -287,23 +293,17 @@
             message: message,
             pk_id: pk_id
         }
-
-
         $.ajax({
             url: "/comment_insert",
             dataType: "json",
             type: "post",
             data: data,
-
-            success: function(data) {
+            success: function (data) {
                 history.go(-0);
 
             }
         })
-
     }
-
-
     //comment불러오기 
     function comment() {
 
@@ -317,7 +317,7 @@
             dataType: "json",
             type: "get",
             data: data,
-            success: function(data) {
+            success: function (data) {
 
                 var data = data
 
@@ -331,11 +331,11 @@
                         .toString() + "-" + (
                             date.getMonth() + 1
                         )
-                        .toString() + "-" + date
-                        .getDate()
-                        .toString() + "-" + date
-                        .getHours() + ":" + date
-                        .getMinutes()
+                            .toString() + "-" + date
+                                .getDate()
+                                .toString() + "-" + date
+                                    .getHours() + ":" + date
+                                        .getMinutes()
 
                     html += '<br>'
                     html += '<div class="thumb">'
@@ -347,7 +347,7 @@
                     html += '</div>'
                     html += '</div>'
                     html += '<div class="reply-btn">'
-                        // html += '<a href="" class="btn-reply text-uppercase">reply</a>'
+                    // html += '<a href="" class="btn-reply text-uppercase">reply</a>'
                     html += '</div>'
                     html += '  </div>'
                     $("#comment_list").html(html)
@@ -367,7 +367,7 @@
 
     //하트 function 처리 
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         var data = {
             pk_id: pk_id
@@ -379,7 +379,7 @@
             type: "get",
             data: data,
 
-            success: function(data) {
+            success: function (data) {
                 var data = data
                 var html = ''
 
@@ -389,9 +389,9 @@
             }
         })
 
-        
-        $('.content').click(function() {
-            
+
+        $('.content').click(function () {
+
             $('.content').unbind('click');
             var member_pk_id = Cookies.get("member_pk_id")
 
@@ -414,7 +414,7 @@
                     dataType: "json",
                     type: "post",
                     data: data_set,
-                    success: function(data) {
+                    success: function (data) {
 
                     }
                 })

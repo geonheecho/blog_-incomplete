@@ -14,19 +14,20 @@ router.get("/", function (req, res) {
 
 router.post("/", function (req, res) {
   var user_id = req.body.user_id;
-  var password = req.body.password;
+  //var password = req.body.password;
+  var password = (password = crypto.createHash("sha512").update(req.body.password).digest("base64")); //암호화
   res.cookie("user_id", user_id);
 
   if (user_id === user_id && password === password) {
     var sql = "SELECT * FROM member WHERE user_id='" + user_id + "'";
     db.query(sql, function (error, result) {
 
-        var type = result[0].type
-        var pk_id = result[0].pk_id
+      var type = result[0].type
+      var pk_id = result[0].pk_id
 
-        res.cookie("type",type)
-        res.cookie("member_pk_id",pk_id)
-        // res.cookie("type",result[0].type)
+      res.cookie("type", type)
+      res.cookie("member_pk_id", pk_id)
+      // res.cookie("type",result[0].type)
       if (result.length < 1) {
         res.send(
           '<script type="text/javascript">alert("존재하지 않는 사용자입니다."); history.back();</script>'

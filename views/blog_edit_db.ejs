@@ -71,8 +71,9 @@
                     <h1 class="text-white">
                         Contact Us
                     </h1>
-                    <p class="text-white link-nav"><a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="contact.html">
-							Contact Us</a></p>
+                    <p class="text-white link-nav"><a href="index.html">Home </a> <span
+                            class="lnr lnr-arrow-right"></span> <a href="contact.html">
+                            Contact Us</a></p>
                 </div>
             </div>
         </div>
@@ -111,7 +112,8 @@
                     Copyright &copy;
                     <script>
                         document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </script> All rights reserved | This template is made with <i class="fa fa-heart-o"
+                        aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>
@@ -120,9 +122,12 @@
     <!-- End footer Area -->
 
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
     <script src="js/easing.min.js"></script>
     <script src="js/hoverIntent.js"></script>
     <script src="js/superfish.min.js"></script>
@@ -147,7 +152,7 @@
     function start() {
 
         var data = {
-            pk_id: pk_id
+            pk_id: pk_id // 데이터 변수에 pkid를 담아서 ajax를 통해 blog_edit로  json으로 보낼것임.
         }
 
         $.ajax({
@@ -156,7 +161,7 @@
             type: "get",
             data: data,
 
-            success: function(data) {
+            success: function (data) {
                 var data = data;
                 var pk_id = data[0].pk_id
                 var content = data[0].content
@@ -169,7 +174,7 @@
 
             },
 
-            error: function(data) {
+            error: function (data) {
                 console.log(data)
             }
         })

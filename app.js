@@ -9,35 +9,34 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(express.static(path.join(__dirname, "public"))); 
+app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-
-app.get("/",function(req, res) {
+app.get("/", function (req, res) {
     res.render("index");
 });
-app.get("/blog-details",function(req, res) {
+app.get("/blog-details", function (req, res) {
     res.render("blog-details");
 });
-app.get("/elements",function(req, res) {
+app.get("/elements", function (req, res) {
     res.render("elements");
 });
-app.get("/archive",function(req, res) {
+app.get("/archive", function (req, res) {
     res.render("archive");
 });
-app.get("/blog_edit_db",function(req, res) {
+app.get("/blog_edit_db", function (req, res) {
     res.render("blog_edit_db");
 });
 
-app.get("/login",function(req, res) {
+app.get("/login", function (req, res) {
     res.render("login");
 });
-app.get("/sigh_up",function(req, res) {
+app.get("/sigh_up", function (req, res) {
     res.render("sigh_up");
 });
-app.get("/admin_page",function(req, res) {
+app.get("/admin_page", function (req, res) {
     res.render("admin_page");
 });
 
@@ -68,13 +67,13 @@ var admin = require("./routes/admin")
 
 
 app.use("/admin", admin);
-app.use("/detail",detail)
+app.use("/detail", detail)
 app.use("/category", category);
 app.use("/insert", insert);
 app.use("/contact", contact);
 app.use("/blog", blog_detail);
-app.use("/content",content)
-app.use("/blog_edit",blog_edit)
+app.use("/content", content)
+app.use("/blog_edit", blog_edit)
 app.use("/archive", archiveRouter);
 app.use("/sign_up", sign_up);
 app.use("/comment_insert", comment_insert);
